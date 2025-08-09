@@ -1,1 +1,1 @@
-DATABASE = "sqlite:///productcatalog.db"
+DATABASE = "productcatalog.db"

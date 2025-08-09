@@ -1,15 +1,22 @@
-from app.product_model import Product
 from app.product_schema import ProductCreate, ProductUpdate, ProductResponse
+from app.product_repo import ProductRepo
+from typing import List
 
 class ProductService:
     def __init__(self):
-        self.db = []
+        self.repo = ProductRepo()
 
     def create_product(self, product: ProductCreate) -> ProductResponse:
-        self.db.append(product)
-        return product
-    
+        return self.repo.create(product)
+
+    def list_products(self) -> List[ProductResponse]:
+        return self.repo.get_all()
+
     def get_product(self, product_id: int) -> ProductResponse:
-        for product in self.db:
-            if product.id == product_id:
-                return product
+        product = self.repo.get_by_id(product_id)
+        if not product:
+            raise Exception(f"Product with ID {product_id} not found")
+        return product
+
+
+

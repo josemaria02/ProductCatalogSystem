@@ -3,10 +3,10 @@ from typing import List, Optional
 
 class ProductBase(BaseModel):
     id: int
-    name: str = Field(..., example="Sample Product")
-    description: Optional[str] = Field(None, example="This is a sample product.")
-    price: float = Field(..., gt=0, example=19.99)
-    category: str = Field(..., example=["electronics", "gadgets"])
+    name: str #= Field(..., example="Sample Product")
+    description: Optional[str] #= Field(None, example="This is a sample product.")
+    price: float #= Field(..., gt=0, example=19.99)
+    category: str #= Field(..., example=["electronics", "gadgets"])
 
 
 class ProductCreate(ProductBase):
