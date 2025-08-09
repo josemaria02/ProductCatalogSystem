@@ -1,0 +1,1 @@
+DATABASE = "sqlite:///productcatalog.db"
