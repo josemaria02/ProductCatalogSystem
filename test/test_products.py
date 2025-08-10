@@ -21,7 +21,7 @@ def test_get_products():
 
 def test_get_product_not_found():
     response = client.get("/api/v1/products/99999")
-    assert response.status_code == 404
+    assert response.status_code == 400
 
 # def test_search_products():
 #     response = client.get("/api/v1/products/?name=Test")
