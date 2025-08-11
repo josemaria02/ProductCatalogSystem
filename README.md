@@ -49,6 +49,7 @@ docker run -d -p 8000:8000 product-catalog
 ```
 # CI/CD (GitHub Actions)
 File: `.github/workflows/product-catalog-pipeline.yml`
+
 Prereq: 
 1) Create repository in Amazon ECR named product-catalog in region us-east-1. 
 Use the below command to create one using aws cli
@@ -63,8 +64,11 @@ Current workflow:
 * Build tag and push Docker image to ECR
 
 # Setup EKS using Terraform
-Terraform creates an EKS cluster. Prereqs: AWS CLI configured, Terraform and kubectl installed.
+Terraform creates an EKS cluster. 
+
+Prereqs: AWS CLI configured, Terraform and kubectl installed.
 1) Set variables in `terraform/terraform.tfvars`:
+Ensure subnets are in different Availability Zones.
 ```
     vpc_id     = "vpc-xxxxxxxx"
     subnet_ids = ["subnet-aaa", "subnet-bbb", "subnet-ccc"]
@@ -81,6 +85,9 @@ Terraform creates an EKS cluster. Prereqs: AWS CLI configured, Terraform and kub
     aws eks update-kubeconfig --region us-east-1 --name product-eks-cluster
 ```
 # Kubernetes Deployment
+_Manifests:_
+`k8s/deployment.yaml`
+`k8s/service.yaml` (type LoadBalancer)
 ```
     kubectl apply -f k8s/deployment.yaml
     kubectl apply -f k8s/service.yaml
