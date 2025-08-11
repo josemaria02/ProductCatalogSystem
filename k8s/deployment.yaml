@@ -22,6 +22,7 @@ spec:
       containers:
       - name: product-catalog
         image: 736488718729.dkr.ecr.us-east-1.amazonaws.com/product-catalog:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         readinessProbe:
