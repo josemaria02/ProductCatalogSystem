@@ -22,7 +22,7 @@ app.include_router(controller.router, prefix="/api/v1/products", tags=["products
 @app.get("/")
 def read_root():
     print("Root received")
-    return {"message": "Welcome to the Product Catalog API"}
+    return {"message": "Welcome to the Product Catalog API - Update Test"}
 
 @app.get("/health")
 def health_check():
