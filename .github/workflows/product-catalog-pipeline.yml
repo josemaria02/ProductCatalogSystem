@@ -72,6 +72,9 @@ jobs:
         aws eks update-kubeconfig --region us-east-1 --name product-eks-cluster
 
     - name: Deploy to EKS
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: product-catalog
       run: |
         echo "kubectl set image deployment/product-catalog-deployment product-catalog=$ECR_REGISTRY/$ECR_REPOSITORY:latest"
         kubectl set image deployment/product-catalog-deployment product-catalog=$ECR_REGISTRY/$ECR_REPOSITORY:latest
