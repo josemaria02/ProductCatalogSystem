@@ -73,5 +73,5 @@ jobs:
 
     - name: Deploy to EKS
       run: |
-        kubectl set image deployment/product-catalog-deployment product-catalog=$ECR_REGISTRY/$ECR_REPOSITORY:latest --record
-        kubectl rollout status deployment/product-catalog
+        kubectl set image deployment/product-catalog-deployment product-catalog=$ECR_REGISTRY/$ECR_REPOSITORY:latest
+        kubectl rollout status deployment/product-catalog-deployment
